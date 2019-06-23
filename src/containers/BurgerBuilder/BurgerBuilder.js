@@ -131,6 +131,7 @@ class BurgerBuilder extends Component {
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
+          inProgress={this.state.loading}
         >
           {orderSummary}
         </Modal>
