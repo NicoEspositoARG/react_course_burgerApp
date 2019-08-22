@@ -62,10 +62,11 @@ export const fetchOrdersStart = () => {
     }
 };
 
-export const fetchOrders  = (token) => { // se podrían haber usado getState en vez de pasar el token por parámetro.
+export const fetchOrders  = (token, userId) => { // se podrían haber usado getState en vez de pasar el token por parámetro.
     return dispatch => {
         dispatch(fetchOrdersStart())
-        axios.get("/orders.json?auth=" + token )
+        const queryParams = "?auth=" + token + '&orderBy="userId"&equalTo="' + userId + '"';
+        axios.get("/orders.json" + queryParams )
         .then(res => {
             const fetchOrders = [];
             for (let key in res.data){
